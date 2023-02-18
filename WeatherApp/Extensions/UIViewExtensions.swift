@@ -74,5 +74,4 @@ extension UIView {
             layer.shadowOffset = newValue
         }
     }
-
 }

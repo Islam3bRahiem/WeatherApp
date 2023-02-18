@@ -8,6 +8,10 @@
 import UIKit
 
 extension UIApplication {
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+
     static var keyWindow: UIWindow? {
         let window = UIApplication.shared.connectedScenes
             .filter({$0.activationState == .foregroundActive})

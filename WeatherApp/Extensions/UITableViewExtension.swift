@@ -8,6 +8,20 @@
 import UIKit
 
 extension UITableView {
+    func dequeueReusableCell<T: UITableViewCell>(withClass name: T.Type) -> T {
+        guard let cell = dequeueReusableCell(withIdentifier: String(describing: name)) as? T else {
+            fatalError("Couldn't find UITableViewCell for \(String(describing: name))")
+        }
+        return cell
+    }
+
+    func dequeueReusableCell<T: UITableViewCell>(withClass name: T.Type, for indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableCell(withIdentifier: String(describing: name), for: indexPath) as? T else {
+            fatalError("Couldn't find UITableViewCell for \(String(describing: name))")
+        }
+        return cell
+    }
+
     func register<T: UITableViewCell>(nibWithClass name: T.Type, at bundleClass: AnyClass? = nil) {
         let identifier = String(describing: name)
         var bundle: Bundle?

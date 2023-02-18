@@ -35,8 +35,8 @@ class AppCoordinator: Coordinator {
     }
     
     func start(){
-        let viewModel = HomeViewModel()
-        let scene = HomeViewController(viewModel: viewModel, coordinator: self)
+        let viewModel = RootViewModel()
+        let scene = RootController(viewModel: viewModel, coordinator: self)
         let nav = UINavigationController(rootViewController: scene)
         window.rootViewController = nav
         window.makeKeyAndVisible()
