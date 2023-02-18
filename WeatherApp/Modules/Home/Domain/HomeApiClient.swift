@@ -13,12 +13,11 @@ class HomeApiClient {
     static let shared = HomeApiClient()
     private lazy var networkObservable = NetworkObservable()
     
-    func fetchData(_ dic: [String: Any] = [:], method: HTTPMethodType = .Get) -> Observable<WeatherResponseModel> {
+    func fetchCityData(_ dic: [String: Any] = [:], method: HTTPMethodType = .Get) -> Observable<WeatherResponseModel> {
         var component = URLComponents(string: NetworkConstants.endpoint.weather.url)!
-        component.queryItems = dic.compactMap({ (key, value) in
+        component.queryItems = dic.compactMap ({ (key, value) in
             URLQueryItem(name: key, value: "\(value)")
         })
-        
         var request = URLRequest(url: component.url!)
         request.httpMethod = method.rawValue
         request.addValue(NetworkConstants.APIKey, forHTTPHeaderField: "API Key")

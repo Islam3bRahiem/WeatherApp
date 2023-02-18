@@ -13,7 +13,7 @@ protocol ViewModel {
     var disposeBag: DisposeBag { get }
     var isLoading: PublishSubject<Bool> { get }
     var displayMessage: PublishSubject<String> { get }
-    func displayNoInternetConnectionError(_ message: String, completion: @escaping ()->())
+    func showAlertMsg(_ message: String)
 }
 
 
@@ -24,13 +24,9 @@ class BaseVieWModel: ViewModel {
 }
 
 extension BaseVieWModel {
-    func displayNoInternetConnectionError(_ message: String, completion: @escaping ()->()) {
+    func showAlertMsg(_ message: String) {
         let alertContoller = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Try Again", style: .default) { _ in
-            completion()
-        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertContoller.addAction(okAction)
         alertContoller.addAction(cancelAction)
         let top = UIApplication.topMostController()
         top.present(alertContoller, animated: true)

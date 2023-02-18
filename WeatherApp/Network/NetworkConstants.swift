@@ -7,7 +7,8 @@
 
 
 public class NetworkConstants {
-    static let baseUrl = "hsttps://api.openweathermap.org/data/2.5/"
+    static let baseUrl = "https://api.openweathermap.org/data/2.5/"
+    static let imageUrl = "https://openweathermap.org/img/w/"
     static let APIKey = "f5cb0b965ea1564c50c6f1b74534d823"
     static let ContentType = "application/json"
     static let Lang = "en"
@@ -15,14 +16,11 @@ public class NetworkConstants {
     
     public enum endpoint {
         case weather
-        case cityWeather(String)
         
         var url: String {
             switch self {
             case .weather:
                 return baseUrl + "weather"
-            case .cityWeather(let city):
-                return baseUrl + "weather?q=\(city)"
             }
         }
     }

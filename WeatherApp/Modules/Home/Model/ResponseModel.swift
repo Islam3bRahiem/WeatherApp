@@ -19,7 +19,7 @@ struct WeatherResponseModel: Codable {
     let sys: Sys?
     let timezone, id: Int?
     let name: String?
-    let cod: Int?
+    let message: String?
 }
 
 // MARK: - Clouds
@@ -56,7 +56,14 @@ struct Sys: Codable {
 // MARK: - Weather
 struct Weather: Codable {
     let id: Int?
-    let main, description, icon: String?
+    let main, desc, icon: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id, main
+        case desc = "description"
+        case icon
+    }
+
 }
 
 // MARK: - Wind

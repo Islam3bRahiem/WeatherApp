@@ -12,7 +12,7 @@ protocol Coordinator {
     var home: HomeNavigator { get }
     var navigationController: UINavigationController? { get }
     func start()
-    func dismiss()
+    func dismiss(completion: (() -> Void)?)
     func pop()
 }
 
@@ -42,9 +42,9 @@ class AppCoordinator: Coordinator {
         window.makeKeyAndVisible()
     }
 
-    func dismiss() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
-        UIApplication.topMostController().dismiss(animated: true, completion: nil)
+    func dismiss(completion: (() -> Void)? = nil) {
+        self.navigationController?.dismiss(animated: true, completion: completion)
+        UIApplication.topMostController().dismiss(animated: true, completion: completion)
     }
     
     func pop() {

@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+protocol SearchCityViewControllerDelegate: AnyObject {
+    func didSearchBarSearchButtonClicked(_ city: String)
+}
 
 class SearchCityViewController: BaseController<SearchCityViewModel> {
 
@@ -15,14 +21,30 @@ class SearchCityViewController: BaseController<SearchCityViewModel> {
         }
     }
     
+    weak var delegate: SearchCityViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.endEditing(false)
     }
     
     
     override func bind(viewModel: SearchCityViewModel) {
-        
+        viewModel.searchForCity
+            .subscribe { [weak self] (city) in
+                guard let self = self,
+                let city = city.element else { return }
+                self.coordinator.dismiss {
+                    self.searchBar.endEditing(true)
+                    self.delegate?.didSearchBarSearchButtonClicked(city)
+                }
+        }.disposed(by: disposeBag)
+
+        viewModel.dismissViewController
+            .subscribe { [weak self] _ in
+                guard let self = self else { return }
+                self.coordinator.dismiss(completion: nil)
+            }.disposed(by: disposeBag)
+
     }
 
 }
@@ -31,11 +53,11 @@ class SearchCityViewController: BaseController<SearchCityViewModel> {
 extension SearchCityViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
-        print("Search with : ", searchBar.text ?? "")
+        guard let city = searchBar.text else { return }
+        viewModel.searchBarSearchButtonClicked(city)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        coordinator.dismiss()
+        viewModel.searchBarCancelButtonClicked()
     }
 }

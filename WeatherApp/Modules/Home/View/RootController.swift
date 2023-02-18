@@ -34,11 +34,16 @@ class RootController: BaseTableViewController<RootViewModel> {
     }
     
     override func bind(viewModel: RootViewModel) {
-        
+        viewModel.navigateToCityDetails
+            .subscribe { [weak self] (city) in
+                guard let self = self,
+                let city = city.element else { return }
+                self.coordinator.home.navigate(to: .CityDetails(city), with: .present)
+        }.disposed(by: disposeBag)
     }
     
     @objc func addNewCityTapped() {
-        coordinator.home.navigate(to: .addNewCity, with: .present)
+        coordinator.home.navigate(to: .addNewCity(self), with: .present)
     }
 }
 
@@ -95,4 +100,10 @@ extension RootController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         50
     }    
+}
+
+extension RootController: SearchCityViewControllerDelegate {
+    func didSearchBarSearchButtonClicked(_ city: String) {
+        viewModel.fetchCityWeather(city)
+    }
 }

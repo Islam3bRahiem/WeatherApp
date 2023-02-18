@@ -11,7 +11,8 @@ class HomeNavigator: Navigator {
     var coordinator: Coordinator
     
     enum Destination {
-        case addNewCity
+        case addNewCity(SearchCityViewControllerDelegate)
+        case CityDetails(CityViewModel)
     }
     
     required init(coordinator: Coordinator) {
@@ -20,9 +21,15 @@ class HomeNavigator: Navigator {
 
     func viewController(for destination: Destination, coordinator: Coordinator) -> UIViewController {
         switch destination {
-        case .addNewCity:
+        case .addNewCity(let delegate):
             let viewModel = SearchCityViewModel()
             let scene = SearchCityViewController(viewModel: viewModel, coordinator: coordinator)
+            scene.delegate = delegate
+            return scene
+            
+        case .CityDetails(let cityViewModel):
+            let viewModel = CityDetailsViewModel(cityViewModel)
+            let scene = CityDetailsViewController(viewModel: viewModel, coordinator: coordinator)
             return scene
         }
     }

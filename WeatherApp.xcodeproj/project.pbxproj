@@ -18,6 +18,10 @@
 		0412EBAF29A13C9400946EA5 /* SearchCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBAE29A13C9400946EA5 /* SearchCityViewModel.swift */; };
 		0412EBB229A13DED00946EA5 /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBB029A13DED00946EA5 /* SearchCityViewController.swift */; };
 		0412EBB329A13DED00946EA5 /* SearchCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0412EBB129A13DED00946EA5 /* SearchCityViewController.xib */; };
+		0412EBB929A16B0600946EA5 /* CityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBB729A16B0600946EA5 /* CityDetailsViewController.swift */; };
+		0412EBBA29A16B0600946EA5 /* CityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0412EBB829A16B0600946EA5 /* CityDetailsViewController.xib */; };
+		0412EBBD29A16B5400946EA5 /* CityDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBBC29A16B5400946EA5 /* CityDetailsViewModel.swift */; };
+		0412EBBF29A1790400946EA5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBBE29A1790400946EA5 /* DateExtension.swift */; };
 		04EA84BC29A0E2FF008FFBD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA84BB29A0E2FF008FFBD1 /* AppDelegate.swift */; };
 		04EA84BE29A0E2FF008FFBD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA84BD29A0E2FF008FFBD1 /* SceneDelegate.swift */; };
 		04EA84C629A0E2FF008FFBD1 /* WeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04EA84C429A0E2FF008FFBD1 /* WeatherApp.xcdatamodeld */; };
@@ -75,6 +79,10 @@
 		0412EBAE29A13C9400946EA5 /* SearchCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewModel.swift; sourceTree = "<group>"; };
 		0412EBB029A13DED00946EA5 /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
 		0412EBB129A13DED00946EA5 /* SearchCityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCityViewController.xib; sourceTree = "<group>"; };
+		0412EBB729A16B0600946EA5 /* CityDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewController.swift; sourceTree = "<group>"; };
+		0412EBB829A16B0600946EA5 /* CityDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityDetailsViewController.xib; sourceTree = "<group>"; };
+		0412EBBC29A16B5400946EA5 /* CityDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewModel.swift; sourceTree = "<group>"; };
+		0412EBBE29A1790400946EA5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		04EA84B829A0E2FF008FFBD1 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EA84BB29A0E2FF008FFBD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04EA84BD29A0E2FF008FFBD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,8 +152,6 @@
 		0412EBA229A1344F00946EA5 /* SearchCity */ = {
 			isa = PBXGroup;
 			children = (
-				04EA851729A0F2B6008FFBD1 /* Domain */,
-				04EA851B29A0F2BD008FFBD1 /* Model */,
 				0412EBAB29A13AD200946EA5 /* View */,
 				0412EBAA29A13ACD00946EA5 /* ViewModel */,
 			);
@@ -173,6 +179,32 @@
 			children = (
 				0412EBB029A13DED00946EA5 /* SearchCityViewController.swift */,
 				0412EBB129A13DED00946EA5 /* SearchCityViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0412EBB429A16A5E00946EA5 /* CityDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0412EBB629A16AE100946EA5 /* View */,
+				0412EBB529A16ADE00946EA5 /* ViewModel */,
+			);
+			path = CityDetails;
+			sourceTree = "<group>";
+		};
+		0412EBB529A16ADE00946EA5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0412EBBC29A16B5400946EA5 /* CityDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0412EBB629A16AE100946EA5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0412EBB729A16B0600946EA5 /* CityDetailsViewController.swift */,
+				0412EBB829A16B0600946EA5 /* CityDetailsViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -242,6 +274,7 @@
 			children = (
 				04EA84F429A0E9EE008FFBD1 /* Home */,
 				0412EBA229A1344F00946EA5 /* SearchCity */,
+				0412EBB429A16A5E00946EA5 /* CityDetails */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -249,6 +282,7 @@
 		04EA84F129A0E9E9008FFBD1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0412EBBE29A1790400946EA5 /* DateExtension.swift */,
 				04EA850129A0EB2D008FFBD1 /* UIApplicationExtension.swift */,
 				0412EB9C29A1206F00946EA5 /* UIBarButtonItem+Extension.swift */,
 				0412EB9E29A1235B00946EA5 /* UIColorExtension.swift */,
@@ -272,6 +306,8 @@
 		04EA84F429A0E9EE008FFBD1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				04EA851729A0F2B6008FFBD1 /* Domain */,
+				04EA851B29A0F2BD008FFBD1 /* Model */,
 				04EA851A29A0F2BC008FFBD1 /* View */,
 				04EA851929A0F2BB008FFBD1 /* ViewModel */,
 			);
@@ -523,6 +559,7 @@
 				0412EBB329A13DED00946EA5 /* SearchCityViewController.xib in Resources */,
 				04EA852D29A101D6008FFBD1 /* Colors.xcassets in Resources */,
 				04EA84C829A0E301008FFBD1 /* Assets.xcassets in Resources */,
+				0412EBBA29A16B0600946EA5 /* CityDetailsViewController.xib in Resources */,
 				0412EB9429A10B0A00946EA5 /* RootController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -659,16 +696,19 @@
 				0412EB9629A117D000946EA5 /* RootViewModel.swift in Sources */,
 				0412EB9329A10B0A00946EA5 /* RootController.swift in Sources */,
 				04EA850429A0EB47008FFBD1 /* UITableViewExtension.swift in Sources */,
+				0412EBBD29A16B5400946EA5 /* CityDetailsViewModel.swift in Sources */,
 				04EA850629A0EB67008FFBD1 /* NetworkConstants.swift in Sources */,
 				0412EBA629A1347D00946EA5 /* CityCell.swift in Sources */,
 				0412EB9F29A1235B00946EA5 /* UIColorExtension.swift in Sources */,
 				04EA84FA29A0EA5F008FFBD1 /* HomeNavigator.swift in Sources */,
 				04EA852529A0F5A3008FFBD1 /* HTTPMethodType.swift in Sources */,
 				0412EBAF29A13C9400946EA5 /* SearchCityViewModel.swift in Sources */,
+				0412EBBF29A1790400946EA5 /* DateExtension.swift in Sources */,
 				04EA850029A0EB15008FFBD1 /* UIViewExtensions.swift in Sources */,
 				04EA851229A0EDB8008FFBD1 /* ActivityIndicatorPresenter.swift in Sources */,
 				0412EB9D29A1206F00946EA5 /* UIBarButtonItem+Extension.swift in Sources */,
 				04EA850E29A0ECDE008FFBD1 /* BaseViewModel.swift in Sources */,
+				0412EBB929A16B0600946EA5 /* CityDetailsViewController.swift in Sources */,
 				04EA84BC29A0E2FF008FFBD1 /* AppDelegate.swift in Sources */,
 				04EA84BE29A0E2FF008FFBD1 /* SceneDelegate.swift in Sources */,
 				04EA850229A0EB2D008FFBD1 /* UIApplicationExtension.swift in Sources */,
