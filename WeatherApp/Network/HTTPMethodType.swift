@@ -5,4 +5,8 @@
 //  Created by Islam Rahiem on 18/02/2023.
 //
 
-import Foundation
+public enum HTTPMethodType: String {
+    case Get     = "GET"
+    case Post    = "POST"
+    case Delete  = "DELETE"
+}
