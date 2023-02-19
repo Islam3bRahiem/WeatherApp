@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CityViewModel {
+struct CityViewModel {
     
     var image: String
     var title: String
@@ -27,5 +27,16 @@ class CityViewModel {
         self.windspeed = "\(model.wind?.speed ?? 0) km/h"
         self.weatherInformation = "Weather information for \(model.name ?? "") received on \n \(Date().currentDate())"
     }
+    
+    init(image: String?, title: String?, description: String?, temperature: String?, humidity: String?, windspeed: String?, weatherInformation: String?) {
+        self.image = image ?? ""
+        self.title = title ?? ""
+        self.description = description ?? ""
+        self.temperature = temperature ?? ""
+        self.humidity = humidity ?? ""
+        self.windspeed = windspeed ?? ""
+        self.weatherInformation = weatherInformation ?? ""
+    }
+
     
 }

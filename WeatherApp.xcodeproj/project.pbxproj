@@ -13,7 +13,6 @@
 		0412EB9D29A1206F00946EA5 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EB9C29A1206F00946EA5 /* UIBarButtonItem+Extension.swift */; };
 		0412EB9F29A1235B00946EA5 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EB9E29A1235B00946EA5 /* UIColorExtension.swift */; };
 		0412EBA129A130B100946EA5 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBA029A130B100946EA5 /* UIViewControllerExtension.swift */; };
-		0412EBA629A1347D00946EA5 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBA429A1347D00946EA5 /* CityCell.swift */; };
 		0412EBA929A136E800946EA5 /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBA829A136E800946EA5 /* CityViewModel.swift */; };
 		0412EBAF29A13C9400946EA5 /* SearchCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBAE29A13C9400946EA5 /* SearchCityViewModel.swift */; };
 		0412EBB229A13DED00946EA5 /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBB029A13DED00946EA5 /* SearchCityViewController.swift */; };
@@ -22,6 +21,12 @@
 		0412EBBA29A16B0600946EA5 /* CityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0412EBB829A16B0600946EA5 /* CityDetailsViewController.xib */; };
 		0412EBBD29A16B5400946EA5 /* CityDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBBC29A16B5400946EA5 /* CityDetailsViewModel.swift */; };
 		0412EBBF29A1790400946EA5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0412EBBE29A1790400946EA5 /* DateExtension.swift */; };
+		04C56ADC29A21F90006F5090 /* CashManagerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C56ADB29A21F90006F5090 /* CashManagerDataSource.swift */; };
+		04C56AE029A220FF006F5090 /* CashManagerDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C56ADF29A220FF006F5090 /* CashManagerDataSourceProtocol.swift */; };
+		04C56AE229A22280006F5090 /* CashManagerRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C56AE129A22280006F5090 /* CashManagerRepositoryProtocol.swift */; };
+		04C56AE429A22311006F5090 /* CashManagerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C56AE329A22311006F5090 /* CashManagerRepository.swift */; };
+		04C56AE729A22CC2006F5090 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C56AE529A22CC2006F5090 /* CityCell.swift */; };
+		04C56AE829A22CC2006F5090 /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C56AE629A22CC2006F5090 /* CityCell.xib */; };
 		04EA84BC29A0E2FF008FFBD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA84BB29A0E2FF008FFBD1 /* AppDelegate.swift */; };
 		04EA84BE29A0E2FF008FFBD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA84BD29A0E2FF008FFBD1 /* SceneDelegate.swift */; };
 		04EA84C629A0E2FF008FFBD1 /* WeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04EA84C429A0E2FF008FFBD1 /* WeatherApp.xcdatamodeld */; };
@@ -74,7 +79,6 @@
 		0412EB9C29A1206F00946EA5 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		0412EB9E29A1235B00946EA5 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		0412EBA029A130B100946EA5 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		0412EBA429A1347D00946EA5 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		0412EBA829A136E800946EA5 /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		0412EBAE29A13C9400946EA5 /* SearchCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewModel.swift; sourceTree = "<group>"; };
 		0412EBB029A13DED00946EA5 /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +87,12 @@
 		0412EBB829A16B0600946EA5 /* CityDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityDetailsViewController.xib; sourceTree = "<group>"; };
 		0412EBBC29A16B5400946EA5 /* CityDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewModel.swift; sourceTree = "<group>"; };
 		0412EBBE29A1790400946EA5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		04C56ADB29A21F90006F5090 /* CashManagerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashManagerDataSource.swift; sourceTree = "<group>"; };
+		04C56ADF29A220FF006F5090 /* CashManagerDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashManagerDataSourceProtocol.swift; sourceTree = "<group>"; };
+		04C56AE129A22280006F5090 /* CashManagerRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashManagerRepositoryProtocol.swift; sourceTree = "<group>"; };
+		04C56AE329A22311006F5090 /* CashManagerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashManagerRepository.swift; sourceTree = "<group>"; };
+		04C56AE529A22CC2006F5090 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		04C56AE629A22CC2006F5090 /* CityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
 		04EA84B829A0E2FF008FFBD1 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EA84BB29A0E2FF008FFBD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04EA84BD29A0E2FF008FFBD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,7 +171,8 @@
 		0412EBA329A1346600946EA5 /* CityCell */ = {
 			isa = PBXGroup;
 			children = (
-				0412EBA429A1347D00946EA5 /* CityCell.swift */,
+				04C56AE529A22CC2006F5090 /* CityCell.swift */,
+				04C56AE629A22CC2006F5090 /* CityCell.xib */,
 			);
 			path = CityCell;
 			sourceTree = "<group>";
@@ -207,6 +218,23 @@
 				0412EBB829A16B0600946EA5 /* CityDetailsViewController.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		04C56ADD29A21FDA006F5090 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				04C56AE329A22311006F5090 /* CashManagerRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		04C56ADE29A2209F006F5090 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				04C56ADF29A220FF006F5090 /* CashManagerDataSourceProtocol.swift */,
+				04C56AE129A22280006F5090 /* CashManagerRepositoryProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		04EA84AF29A0E2FF008FFBD1 = {
@@ -384,6 +412,9 @@
 			isa = PBXGroup;
 			children = (
 				04EA84C429A0E2FF008FFBD1 /* WeatherApp.xcdatamodeld */,
+				04C56ADB29A21F90006F5090 /* CashManagerDataSource.swift */,
+				04C56ADE29A2209F006F5090 /* Protocols */,
+				04C56ADD29A21FDA006F5090 /* Repositories */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -556,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EA84CB29A0E301008FFBD1 /* LaunchScreen.storyboard in Resources */,
+				04C56AE829A22CC2006F5090 /* CityCell.xib in Resources */,
 				0412EBB329A13DED00946EA5 /* SearchCityViewController.xib in Resources */,
 				04EA852D29A101D6008FFBD1 /* Colors.xcassets in Resources */,
 				04EA84C829A0E301008FFBD1 /* Assets.xcassets in Resources */,
@@ -691,18 +723,20 @@
 				04EA851D29A0F2C5008FFBD1 /* HomeApiClient.swift in Sources */,
 				04EA84C629A0E2FF008FFBD1 /* WeatherApp.xcdatamodeld in Sources */,
 				04EA850829A0EC36008FFBD1 /* NetworkObservable.swift in Sources */,
+				04C56ADC29A21F90006F5090 /* CashManagerDataSource.swift in Sources */,
 				0412EBB229A13DED00946EA5 /* SearchCityViewController.swift in Sources */,
 				04EA851029A0ECE6008FFBD1 /* BaseController.swift in Sources */,
 				0412EB9629A117D000946EA5 /* RootViewModel.swift in Sources */,
+				04C56AE029A220FF006F5090 /* CashManagerDataSourceProtocol.swift in Sources */,
 				0412EB9329A10B0A00946EA5 /* RootController.swift in Sources */,
 				04EA850429A0EB47008FFBD1 /* UITableViewExtension.swift in Sources */,
 				0412EBBD29A16B5400946EA5 /* CityDetailsViewModel.swift in Sources */,
 				04EA850629A0EB67008FFBD1 /* NetworkConstants.swift in Sources */,
-				0412EBA629A1347D00946EA5 /* CityCell.swift in Sources */,
 				0412EB9F29A1235B00946EA5 /* UIColorExtension.swift in Sources */,
 				04EA84FA29A0EA5F008FFBD1 /* HomeNavigator.swift in Sources */,
 				04EA852529A0F5A3008FFBD1 /* HTTPMethodType.swift in Sources */,
 				0412EBAF29A13C9400946EA5 /* SearchCityViewModel.swift in Sources */,
+				04C56AE429A22311006F5090 /* CashManagerRepository.swift in Sources */,
 				0412EBBF29A1790400946EA5 /* DateExtension.swift in Sources */,
 				04EA850029A0EB15008FFBD1 /* UIViewExtensions.swift in Sources */,
 				04EA851229A0EDB8008FFBD1 /* ActivityIndicatorPresenter.swift in Sources */,
@@ -712,6 +746,8 @@
 				04EA84BC29A0E2FF008FFBD1 /* AppDelegate.swift in Sources */,
 				04EA84BE29A0E2FF008FFBD1 /* SceneDelegate.swift in Sources */,
 				04EA850229A0EB2D008FFBD1 /* UIApplicationExtension.swift in Sources */,
+				04C56AE229A22280006F5090 /* CashManagerRepositoryProtocol.swift in Sources */,
+				04C56AE729A22CC2006F5090 /* CityCell.swift in Sources */,
 				0412EBA929A136E800946EA5 /* CityViewModel.swift in Sources */,
 				04EA851F29A0F367008FFBD1 /* ResponseModel.swift in Sources */,
 				04EA84FC29A0EA7B008FFBD1 /* Navigator.swift in Sources */,

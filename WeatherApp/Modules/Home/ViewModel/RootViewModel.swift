@@ -15,7 +15,7 @@ protocol RootViewModelInputs {
 }
 
 protocol RootViewModelOutputs {
-    var itemsList: BehaviorRelay<[CityViewModel]> { get }
+    var citiesList: BehaviorRelay<[CityViewModel]> { get }
     var navigateToCityDetails: PublishSubject<CityViewModel> { get }
 }
 
@@ -24,13 +24,28 @@ class RootViewModel: BaseVieWModel, RootViewModelInputs, RootViewModelOutputs {
     //MARK: - Properties
     private let apiClient = HomeApiClient.shared
 
+    //CoreData Repository
+    private var cashManagerRepository: CashManagerRepositoryProtocol
+    private let coreDataSerialQueue = DispatchQueue(label: "com.coredata.dispatch.serial")
+
+    
+    init(cashManagerRepository: CashManagerRepositoryProtocol = CashManagerRepository()) {
+        self.cashManagerRepository = cashManagerRepository
+    }
+    
     
     //MARK: - Outputs
-    var itemsList: BehaviorRelay<[CityViewModel]> = .init(value: [])
+    var citiesList: BehaviorRelay<[CityViewModel]> = .init(value: [])
     var navigateToCityDetails: PublishSubject<CityViewModel> = .init()
+    
     
     //MARK: - Inputs
     func fetchWatherFroCoreData() {
+        isLoading.onNext(true)
+        self.coreDataSerialQueue.async() {
+            Thread.sleep(forTimeInterval: 1)
+            self.getAllOfflineCities()
+        }
     }
     
     func fetchCityWeather(_ city: String) {
@@ -62,6 +77,22 @@ class RootViewModel: BaseVieWModel, RootViewModelInputs, RootViewModelOutputs {
         }.disposed(by: disposeBag)
     }
     
+    private func getAllOfflineCities() {
+        Task.init {
+            let items = await cashManagerRepository.getAllCities()
+            switch items {
+            case .success(let items):
+                DispatchQueue.main.async {
+                    self.isLoading.onNext(false)
+                    self.citiesList.accept(items)
+                }
+                print("branches get successfully")
+            case .failure(let error):
+                print("ERROR : ", error)
+            }
+        }
+    }
+    
     private
     func handleResponse(_ response: WeatherResponseModel) {
         if let msg = response.message, !msg.isEmpty {
@@ -70,6 +101,28 @@ class RootViewModel: BaseVieWModel, RootViewModelInputs, RootViewModelOutputs {
         }
         let city = CityViewModel(response)
         self.navigateToCityDetails.onNext(city)
+        
+        //Cash Branches offline on coredata
+        self.coreDataSerialQueue.async() {
+            Thread.sleep(forTimeInterval: 1)
+            self.saveCityToCoreData(city)
+        }
     }
+    
+    private
+    func saveCityToCoreData(_ city: CityViewModel) {
+        Task.init {
+            let newItem = await cashManagerRepository.saveCity(city)
+            switch newItem {
+            case .success( _):
+                DispatchQueue.main.async {
+                    self.fetchWatherFroCoreData()
+                }
+            case .failure(let error):
+                print("Error : ", error.localizedDescription)
+            }
+        }
+    }
+
         
 }

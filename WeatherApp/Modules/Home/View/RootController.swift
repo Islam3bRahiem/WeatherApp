@@ -23,12 +23,18 @@ class RootController: BaseTableViewController<RootViewModel> {
     
     private
     func tableViewConfiguration() {
+        self.tableView.dataSource = nil
         self.tableView.separatorStyle = .singleLine
         self.tableView.separatorColor = .separatorColor
-        self.tableView.dataSource = nil
-        
-        viewModel.itemsList.bind(to: tableView.rx.items(cellIdentifier: String(describing: CityCell.self),
+        self.tableView.register(nibWithCellClass: CityCell.self)
+
+        viewModel.citiesList.bind(to: tableView.rx.items(cellIdentifier: String(describing: CityCell.self),
                                                         cellType: CityCell.self)) { index, viewModel, cell in
+            let image = UIImage(systemName: "chevron.right")
+            let checkmark  = UIImageView(frame: CGRect(x:0, y:0, width:(image?.size.width)!, height:(image?.size.height)!));
+            checkmark.image = image
+            cell.accessoryView = checkmark
+            cell.tintColor = .mainColor
             cell.bind(viewModel)
         }.disposed(by: disposeBag)
     }
