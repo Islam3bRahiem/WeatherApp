@@ -45,7 +45,7 @@
 		04EA850829A0EC36008FFBD1 /* NetworkObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA850729A0EC36008FFBD1 /* NetworkObservable.swift */; };
 		04EA850E29A0ECDE008FFBD1 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA850D29A0ECDE008FFBD1 /* BaseViewModel.swift */; };
 		04EA851029A0ECE6008FFBD1 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA850F29A0ECE6008FFBD1 /* BaseController.swift */; };
-		04EA851229A0EDB8008FFBD1 /* ActivityIndicatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA851129A0EDB8008FFBD1 /* ActivityIndicatorPresenter.swift */; };
+		04EA851229A0EDB8008FFBD1 /* SVProgressHUDPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA851129A0EDB8008FFBD1 /* SVProgressHUDPresenter.swift */; };
 		04EA851D29A0F2C5008FFBD1 /* HomeApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA851C29A0F2C5008FFBD1 /* HomeApiClient.swift */; };
 		04EA851F29A0F367008FFBD1 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA851E29A0F367008FFBD1 /* ResponseModel.swift */; };
 		04EA852529A0F5A3008FFBD1 /* HTTPMethodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA852429A0F5A3008FFBD1 /* HTTPMethodType.swift */; };
@@ -115,7 +115,7 @@
 		04EA850729A0EC36008FFBD1 /* NetworkObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkObservable.swift; sourceTree = "<group>"; };
 		04EA850D29A0ECDE008FFBD1 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		04EA850F29A0ECE6008FFBD1 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
-		04EA851129A0EDB8008FFBD1 /* ActivityIndicatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorPresenter.swift; sourceTree = "<group>"; };
+		04EA851129A0EDB8008FFBD1 /* SVProgressHUDPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVProgressHUDPresenter.swift; sourceTree = "<group>"; };
 		04EA851C29A0F2C5008FFBD1 /* HomeApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeApiClient.swift; sourceTree = "<group>"; };
 		04EA851E29A0F367008FFBD1 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		04EA852429A0F5A3008FFBD1 /* HTTPMethodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethodType.swift; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 		04EA850B29A0EC8D008FFBD1 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				04EA851129A0EDB8008FFBD1 /* ActivityIndicatorPresenter.swift */,
+				04EA851129A0EDB8008FFBD1 /* SVProgressHUDPresenter.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -739,7 +739,7 @@
 				04C56AE429A22311006F5090 /* CashManagerRepository.swift in Sources */,
 				0412EBBF29A1790400946EA5 /* DateExtension.swift in Sources */,
 				04EA850029A0EB15008FFBD1 /* UIViewExtensions.swift in Sources */,
-				04EA851229A0EDB8008FFBD1 /* ActivityIndicatorPresenter.swift in Sources */,
+				04EA851229A0EDB8008FFBD1 /* SVProgressHUDPresenter.swift in Sources */,
 				0412EB9D29A1206F00946EA5 /* UIBarButtonItem+Extension.swift in Sources */,
 				04EA850E29A0ECDE008FFBD1 /* BaseViewModel.swift in Sources */,
 				0412EBB929A16B0600946EA5 /* CityDetailsViewController.swift in Sources */,

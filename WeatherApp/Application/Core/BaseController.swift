@@ -14,7 +14,7 @@ protocol Alertable {
 }
 
 
-class BaseController<T: BaseVieWModel>: UIViewController, ActivityIndicatorPresenter {
+class BaseController<T: BaseVieWModel>: UIViewController, SVProgressHUDPresenter {
     
     //MARK: - Properties
     var viewModel: T
@@ -32,7 +32,6 @@ class BaseController<T: BaseVieWModel>: UIViewController, ActivityIndicatorPrese
     lazy var disposeBag: DisposeBag = {
        return DisposeBag()
     }()
-    var activityIndicator = UIActivityIndicatorView()
     
     
     //MARK: - Init
@@ -124,7 +123,7 @@ extension BaseController: Alertable {
 }
 
 
-class BaseTableViewController<T: BaseVieWModel>: UITableViewController, ActivityIndicatorPresenter {
+class BaseTableViewController<T: BaseVieWModel>: UITableViewController, SVProgressHUDPresenter {
 
     //MARK: - Properties
     var viewModel: T
@@ -141,7 +140,6 @@ class BaseTableViewController<T: BaseVieWModel>: UITableViewController, Activity
     lazy var disposeBag: DisposeBag = {
        return DisposeBag()
     }()
-    var activityIndicator = UIActivityIndicatorView()
     
     
     //MARK: - Init
