@@ -14,11 +14,7 @@ class RootController: BaseTableViewController<RootViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewConfiguration()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel.fetchWatherFroCoreData()
+        viewModel.input.fetchWatherFroCoreData()
     }
     
     private
@@ -28,7 +24,7 @@ class RootController: BaseTableViewController<RootViewModel> {
         self.tableView.separatorColor = .separatorColor
         self.tableView.register(nibWithCellClass: CityCell.self)
 
-        viewModel.citiesList.bind(to: tableView.rx.items(cellIdentifier: String(describing: CityCell.self),
+        viewModel.output.citiesList.bind(to: tableView.rx.items(cellIdentifier: String(describing: CityCell.self),
                                                         cellType: CityCell.self)) { index, viewModel, cell in
             let image = UIImage(systemName: "chevron.right")
             let checkmark  = UIImageView(frame: CGRect(x:0, y:0, width:(image?.size.width)!, height:(image?.size.height)!));
@@ -37,10 +33,18 @@ class RootController: BaseTableViewController<RootViewModel> {
             cell.tintColor = .mainColor
             cell.bind(viewModel)
         }.disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(CityViewModel.self)
+            .subscribe { [weak self] viewModel in
+            guard let self = self,
+                  let viewModel = viewModel.element else { return }
+                self.coordinator.home.navigate(to: .CityHistorical(viewModel.name))
+        }.disposed(by: disposeBag)
+
     }
     
     override func bind(viewModel: RootViewModel) {
-        viewModel.navigateToCityDetails
+        viewModel.output.navigateToCityDetails
             .subscribe { [weak self] (city) in
                 guard let self = self,
                 let city = city.element else { return }
@@ -105,11 +109,23 @@ extension RootController {
         
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         50
-    }    
+    }
+    
+    //Stop Swipe delete action
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] action, view, completionHandler in
+            guard let self = self else { return }
+            self.viewModel.input.deleteCity(at: indexPath.row)
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(named: "delete")
+        deleteAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }
 
 extension RootController: SearchCityViewControllerDelegate {
     func didSearchBarSearchButtonClicked(_ city: String) {
-        viewModel.fetchCityWeather(city)
+        viewModel.input.fetchCityWeather(city)
     }
 }

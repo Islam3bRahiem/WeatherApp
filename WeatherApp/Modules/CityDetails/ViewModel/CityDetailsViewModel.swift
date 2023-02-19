@@ -16,8 +16,25 @@ protocol CityDetailsViewModelOutputs {
     var cityObservable: PublishSubject<CityViewModel> { get }
 }
 
-class CityDetailsViewModel: BaseVieWModel, CityDetailsViewModelInputs, CityDetailsViewModelOutputs {
+// MARK: - ... Protocol
+protocol CityDetailsViewModelProtocol {
+    var input: CityDetailsViewModelInputs { get set }
+    var output: CityDetailsViewModelOutputs { get set }
+}
+
+class CityDetailsViewModel: BaseVieWModel, CityDetailsViewModelInputs, CityDetailsViewModelOutputs, CityDetailsViewModelProtocol {
     
+    //MARK: - Properties
+    var input: CityDetailsViewModelInputs {
+        get { return self }
+        set {}
+    }
+    
+    var output: CityDetailsViewModelOutputs {
+        get { return self }
+        set {}
+    }
+
     //MARK: - init
     init(_ cityViewModel: CityViewModel) {
         super.init()

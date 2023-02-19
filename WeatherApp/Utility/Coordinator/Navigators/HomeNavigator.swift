@@ -13,6 +13,7 @@ class HomeNavigator: Navigator {
     enum Destination {
         case addNewCity(SearchCityViewControllerDelegate)
         case CityDetails(CityViewModel)
+        case CityHistorical(String)
     }
     
     required init(coordinator: Coordinator) {
@@ -30,6 +31,11 @@ class HomeNavigator: Navigator {
         case .CityDetails(let cityViewModel):
             let viewModel = CityDetailsViewModel(cityViewModel)
             let scene = CityDetailsViewController(viewModel: viewModel, coordinator: coordinator)
+            return scene
+            
+        case .CityHistorical(let name):
+            let viewModel = CityHistoricalViewModel(name)
+            let scene = CityHistoricalViewController(viewModel: viewModel, coordinator: coordinator)
             return scene
         }
     }

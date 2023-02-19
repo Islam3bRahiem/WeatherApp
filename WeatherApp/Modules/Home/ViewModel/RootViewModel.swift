@@ -12,6 +12,7 @@ import RxCocoa
 protocol RootViewModelInputs {
     func fetchWatherFroCoreData()
     func fetchCityWeather(_ city: String)
+    func deleteCity(at index: Int)
 }
 
 protocol RootViewModelOutputs {
@@ -19,9 +20,25 @@ protocol RootViewModelOutputs {
     var navigateToCityDetails: PublishSubject<CityViewModel> { get }
 }
 
-class RootViewModel: BaseVieWModel, RootViewModelInputs, RootViewModelOutputs {
+// MARK: - ... Protocol
+protocol RootViewModelProtocol {
+    var input: RootViewModelInputs { get set }
+    var output: RootViewModelOutputs { get set }
+}
+
+class RootViewModel: BaseVieWModel, RootViewModelInputs, RootViewModelOutputs, RootViewModelProtocol {
     
     //MARK: - Properties
+    var input: RootViewModelInputs {
+        get { return self }
+        set {}
+    }
+    
+    var output: RootViewModelOutputs {
+        get { return self }
+        set {}
+    }
+
     private let apiClient = HomeApiClient.shared
 
     //CoreData Repository
@@ -77,6 +94,11 @@ class RootViewModel: BaseVieWModel, RootViewModelInputs, RootViewModelOutputs {
         }.disposed(by: disposeBag)
     }
     
+    func deleteCity(at index: Int) {
+        deleteOfflineCity(at: index)
+    }
+    
+    // MARK: - Private Functions
     private func getAllOfflineCities() {
         Task.init {
             let items = await cashManagerRepository.getAllCities()
@@ -86,7 +108,6 @@ class RootViewModel: BaseVieWModel, RootViewModelInputs, RootViewModelOutputs {
                     self.isLoading.onNext(false)
                     self.citiesList.accept(items)
                 }
-                print("branches get successfully")
             case .failure(let error):
                 print("ERROR : ", error)
             }
@@ -123,6 +144,28 @@ class RootViewModel: BaseVieWModel, RootViewModelInputs, RootViewModelOutputs {
             }
         }
     }
+    
+    private
+    func deleteOfflineCity(at index: Int) {
+        Task.init {
+            let name = citiesList.value[index].name
+            let items = await cashManagerRepository.deleteCity(name)
+            switch items {
+            case .success( _):
+                DispatchQueue.main.async {
+                    var cities = self.citiesList.value
+                    cities.remove(at: index)
+                    self.citiesList.accept(cities)
+                }
+            case .failure(let error):
+                print("ERROR : ", error)
+                DispatchQueue.main.async {
+                    self.showAlertMsg(error.localizedDescription)
+                }
+            }
+        }
+    }
 
+   
         
 }

@@ -33,14 +33,23 @@ struct CashManagerRepository: CashManagerRepositoryProtocol {
         }
     }
     
-    func deleteCity(_ id: UUID) async -> Result<Bool, ErrorResponse> {
+    func deleteCity(_ name: String) async -> Result<Bool, ErrorResponse> {
         do{
-            try await dataSource.delete(id)
+            try await dataSource.delete(name)
             return .success(true)
         }catch{
             return .failure(.DeleteError)
         }
     }
     
+    
+    func getAllCities(with name: String) async -> Result<[CityViewModel], ErrorResponse> {
+        do {
+            let _todos =  try await dataSource.getAllCities(with: name)
+            return .success(_todos)
+        } catch{
+            return .failure(.FetchError)
+        }
+    }
 
 }

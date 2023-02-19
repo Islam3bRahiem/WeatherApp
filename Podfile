@@ -9,6 +9,7 @@ target 'WeatherApp' do
   pod 'SVProgressHUD'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Kingfisher'
 
 
   target 'WeatherAppTests' do

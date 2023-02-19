@@ -19,10 +19,25 @@ protocol SearchCityViewModelOutputs {
     var searchForCity: PublishSubject<String> { get }
 }
 
-class SearchCityViewModel: BaseVieWModel, SearchCityViewModelInputs, SearchCityViewModelOutputs {
+// MARK: - ... Protocol
+protocol SearchCityViewModelProtocol {
+    var input: SearchCityViewModelInputs { get set }
+    var output: SearchCityViewModelOutputs { get set }
+}
+
+class SearchCityViewModel: BaseVieWModel, SearchCityViewModelInputs, SearchCityViewModelOutputs, SearchCityViewModelProtocol {
     
     //MARK: - Properties
+    var input: SearchCityViewModelInputs {
+        get { return self }
+        set {}
+    }
     
+    var output: SearchCityViewModelOutputs {
+        get { return self }
+        set {}
+    }
+
     
     //MARK: - Outputs
     var dismissViewController: PublishSubject<Void>  = .init()

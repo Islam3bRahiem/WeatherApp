@@ -29,19 +29,18 @@ class CityDetailsViewController: BaseController<CityDetailsViewModel> {
     }
     
     override func bind(viewModel: CityDetailsViewModel) {
-        viewModel.cityObservable
+        viewModel.output.cityObservable
             .subscribe { [weak self] (viewModel) in
                 guard let self = self,
                       let viewModel = viewModel.element else { return }
                 self.titleLbl.text = viewModel.title
-                self.weatherImg.downloaded(from: viewModel.image)
+                self.weatherImg.setImage(url: viewModel.image)
                 self.descriptionLbl.text = viewModel.description
                 self.temperatureLbl.text = viewModel.temperature
                 self.humidityLbl.text = viewModel.humidity
                 self.windSpeedLbl.text = viewModel.windspeed
                 self.weatherInfo.text = viewModel.weatherInformation
             }.disposed(by: disposeBag)
-        
     }
 
     private
@@ -60,17 +59,3 @@ class CityDetailsViewController: BaseController<CityDetailsViewModel> {
             }.disposed(by: disposeBag)
     }
 }
-
-
-extension UIImageView {
-    func downloaded(from url: String, contentMode mode: ContentMode = .scaleAspectFit) {
-        let url = URL(string: url)
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                self.image = UIImage(data: data!)
-            }
-        }
-    }
-}
-

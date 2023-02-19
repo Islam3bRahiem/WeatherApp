@@ -29,7 +29,7 @@ class SearchCityViewController: BaseController<SearchCityViewModel> {
     
     
     override func bind(viewModel: SearchCityViewModel) {
-        viewModel.searchForCity
+        viewModel.output.searchForCity
             .subscribe { [weak self] (city) in
                 guard let self = self,
                 let city = city.element else { return }
@@ -39,7 +39,7 @@ class SearchCityViewController: BaseController<SearchCityViewModel> {
                 }
         }.disposed(by: disposeBag)
 
-        viewModel.dismissViewController
+        viewModel.output.dismissViewController
             .subscribe { [weak self] _ in
                 guard let self = self else { return }
                 self.coordinator.dismiss(completion: nil)
@@ -54,10 +54,10 @@ extension SearchCityViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let city = searchBar.text else { return }
-        viewModel.searchBarSearchButtonClicked(city)
+        viewModel.input.searchBarSearchButtonClicked(city)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.searchBarCancelButtonClicked()
+        viewModel.input.searchBarCancelButtonClicked()
     }
 }

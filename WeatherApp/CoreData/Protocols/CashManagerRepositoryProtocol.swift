@@ -14,6 +14,7 @@ enum ErrorResponse: Error{
 protocol CashManagerRepositoryProtocol {
     func getAllCities() async -> Result<[CityViewModel], ErrorResponse>
     func saveCity(_ city: CityViewModel) async -> Result<Bool, ErrorResponse>
-    func deleteCity(_ id: UUID) async -> Result<Bool, ErrorResponse>
+    func deleteCity(_ name: String) async -> Result<Bool, ErrorResponse>
+    func getAllCities(with name: String) async -> Result<[CityViewModel], ErrorResponse>
 }
 

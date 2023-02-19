@@ -24,32 +24,35 @@ struct CashManagerDataSource: CashManagerDataSourceProtocol {
         let request = CityEntity.fetchRequest()
         return try container.viewContext.fetch(request).map({ item in
             CityViewModel(image: item.image,
-                          title: item.title,
-                          description: item.description,
+                          name: item.name,
+                          country: item.country,
+                          description: item.desc,
                           temperature: item.temperature,
                           humidity: item.humidity,
                           windspeed: item.windspeed,
-                          weatherInformation: item.weatherInformation)
+                          weatherInformation: item.weatherInformation,
+                          historicalDate: item.historicalDate)
         })
     }
     
     func saveCity(city: CityViewModel) async throws {
         let item = CityEntity(context: container.viewContext)
-        item.id = UUID()
         item.image = city.image
-        item.title = city.title
+        item.name = city.name
+        item.country = city.country
         item.desc = city.description
         item.temperature = city.temperature
         item.humidity = city.humidity
         item.windspeed = city.windspeed
         item.weatherInformation = city.weatherInformation
+        item.historicalDate = city.historicalDate
         saveContext()
 
     }
     
 
-    func delete(_ id: UUID) async throws {
-        let todoCoreDataEntity = try getEntityById(id)!
+    func delete(_ name: String) async throws {
+        let todoCoreDataEntity = try getEntityByName(name)!
         let context = container.viewContext;
         context.delete(todoCoreDataEntity)
         
@@ -61,16 +64,32 @@ struct CashManagerDataSource: CashManagerDataSourceProtocol {
         }
     }
     
+    func getAllCities(with name: String) async throws -> [CityViewModel] {
+        let request = CityEntity.fetchRequest()
+        let filterArray = try container.viewContext.fetch(request).filter({ $0.name == name })
+        return filterArray.map({ item in
+            CityViewModel(image: item.image,
+                          name: item.name,
+                          country: item.country,
+                          description: item.desc,
+                          temperature: item.temperature,
+                          humidity: item.humidity,
+                          windspeed: item.windspeed,
+                          weatherInformation: item.weatherInformation,
+                          historicalDate: item.historicalDate)
+        })
+    }
+
+    
     //Private Functions
-    private func getEntityById(_ id: UUID)  throws  -> CityEntity?{
+    private func getEntityByName(_ name: String)  throws  -> CityEntity?{
         let request = CityEntity.fetchRequest()
         request.fetchLimit = 1
         request.predicate = NSPredicate(
-            format: "id = %@", id.uuidString)
+            format: "name = %@", name)
         let context =  container.viewContext
-        let todoCoreDataEntity = try context.fetch(request)[0]
+        let todoCoreDataEntity = try? context.fetch(request)[0]
         return todoCoreDataEntity
-        
     }
             
     private func saveContext(){
@@ -87,3 +106,5 @@ struct CashManagerDataSource: CashManagerDataSourceProtocol {
     
 
 }
+
+//59F70624-D30C-47FC-BE65-A97F40F43797
